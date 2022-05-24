@@ -8,11 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
+import java.util.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,9 +18,8 @@ import java.util.Set;
 @Entity
 public class PeliculaEntity {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String imagen;
     private String titulo;
@@ -35,26 +30,25 @@ public class PeliculaEntity {
 
     private int calificacion; //DE 1 A 5
 
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable( //creamos una tabla intermedia que crea una relacion de muchos a muchos entre peliculas y generos
-            name = "pelicula_genero",
-            joinColumns = @JoinColumn(name="pelicula_id"),
-            inverseJoinColumns = @JoinColumn(name="genero_id")
-    )
-    private Set<GeneroEntity> generos = new HashSet<>();
-    //cuando creo la pelicula, la creo con la lista de generos asociados
-
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "pelicula_personaje",
             joinColumns = @JoinColumn(name="pelicula_id"),
             inverseJoinColumns = @JoinColumn(name="personaje_id")
     )
-    private Set<PersonajeEntity> personajes = new HashSet<PersonajeEntity>();
+    private List<PersonajeEntity> personajes = new ArrayList<>();
     //cuando creo la pelicula, la creo con la lista de personajes asociados
 
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable( //creamos una tabla intermedia que crea una relacion de muchos a muchos entre peliculas y generos
+            name = "pelicula_genero",
+            joinColumns = @JoinColumn(name="pelicula_id"),
+            inverseJoinColumns = @JoinColumn(name="genero_id")
+    )
+    private List<GeneroEntity> generos = new ArrayList<>();
+    //cuando creo la pelicula, la creo con la lista de generos asociados
 
     @Override
     public boolean equals(Object o) {
@@ -63,6 +57,18 @@ public class PeliculaEntity {
         return other.id == this.id;
     }
 
+    public void addGenero(GeneroEntity generoEntity){
+        this.generos.add(generoEntity);
+    }
+
+
+    public void addPersonaje(PersonajeEntity personajeEntity){
+        this.personajes.add(personajeEntity);
+    }
+
+    public void removePersonaje(PersonajeEntity personajeEntity){
+        this.personajes.remove(personajeEntity);
+    }
 
 }
 
@@ -85,6 +91,28 @@ public class PeliculaEntity {
 
     @Column(name = "genero_id", nullable = false)
     private Long generoId; //lo uso para guardar y actualizar el id
+
+
+
+        @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable( //creamos una tabla intermedia que crea una relacion de muchos a muchos entre peliculas y generos
+            name = "pelicula_genero",
+            joinColumns = @JoinColumn(name="pelicula_id"),
+            inverseJoinColumns = @JoinColumn(name="genero_id")
+    )
+    private List<GeneroEntity> generos = new ArrayList<>();
+    //cuando creo la pelicula, la creo con la lista de generos asociados
+
+
+
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "genero_id", insertable = false, updatable = false)
+    private GeneroEntity genero; //me traigo el genero entero, obtengo la info del objeto
+
+    @Column(name = "genero_id", nullable = false)
+    private Long generoId; //lo uso para guardar y actualizar el id
+
 
 */
 

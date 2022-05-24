@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -19,7 +20,7 @@ import java.util.Set;
 public class PersonajeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String imagen;
     private String nombre;
@@ -28,9 +29,10 @@ public class PersonajeEntity {
     private String historia;
 
     @ManyToMany(mappedBy ="personajes", cascade = CascadeType.ALL)
-    private Set<PeliculaEntity> peliculas = new HashSet<>();
+    private List<PeliculaEntity> peliculas = new ArrayList<>();
     //cuando creo un personaje, no voy a poder pasar una lista de peliculas para que lo cree
 
+    /*
     //agregar y eliminar peliculas
     public void agregarPelicula(PeliculaEntity pelicula) {
         this.peliculas.add(pelicula);
@@ -39,4 +41,6 @@ public class PersonajeEntity {
     public void eliminarPelicula(PeliculaEntity pelicula) {
         this.peliculas.remove(pelicula);
     }
+
+     */
 }
