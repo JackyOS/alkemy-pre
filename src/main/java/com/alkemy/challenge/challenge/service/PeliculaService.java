@@ -8,9 +8,6 @@ import java.util.List;
 
 public interface PeliculaService {
 
-
-    //List<PeliculaDTO> getAllPeliculas();
-
     List<PeliculaBasicDTO> getAllBasicPeliculas();
 
     PeliculaDTO getDetailsById(Long id);
@@ -18,7 +15,6 @@ public interface PeliculaService {
     PeliculaFiltroDTO getPeliculasFiltros(int pageNumber, int pageSize, String sortBy, String sortDir);
 
     PeliculaDTO save(PeliculaDTO dto);
-
 
     PeliculaDTO update(PeliculaDTO dto, Long id);
 
@@ -30,5 +26,5 @@ public interface PeliculaService {
 
     void addGenero(Long id, Long idGenero);
 
-    //List<PeliculaDTO> getByFilters(String titulo, Long idGenero, String order);
+    public void removeGenero(Long id, Long idGenero);
 }

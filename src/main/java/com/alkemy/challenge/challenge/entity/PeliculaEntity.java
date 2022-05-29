@@ -60,12 +60,13 @@ public class PeliculaEntity {
     public void addGenero(GeneroEntity generoEntity){
         this.generos.add(generoEntity);
     }
-
+    public void removeGenero(GeneroEntity generoEntity){
+        this.generos.remove(generoEntity);
+    }
 
     public void addPersonaje(PersonajeEntity personajeEntity){
         this.personajes.add(personajeEntity);
     }
-
     public void removePersonaje(PersonajeEntity personajeEntity){
         this.personajes.remove(personajeEntity);
     }

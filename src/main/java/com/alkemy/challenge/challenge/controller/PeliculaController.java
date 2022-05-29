@@ -74,22 +74,29 @@ public class PeliculaController { //maneja una solicitud y una respuesta -- no h
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    //agregar personaje a la pelicula
     @PostMapping("/{id}/personaje/{idPersonaje}")
     public ResponseEntity<Void> addPersonaje(@PathVariable Long id, @PathVariable Long idPersonaje) {
         peliculaService.addPersonaje(id,idPersonaje);
         return ResponseEntity.status(HttpStatus.CREATED).build(); //respondemos con http creado
     }
-
-    @PostMapping("/{id}/genero/{idGenero}")
-    public ResponseEntity<Void> addGenero(@PathVariable Long id, @PathVariable Long idGenero) {
-        peliculaService.addGenero(id,idGenero);
-        return ResponseEntity.status(HttpStatus.CREATED).build(); //respondemos con http creado
-    }
-
+    //eliminar personaje de la pelicula
     @DeleteMapping("/{id}/personaje/{idPersonaje}")
     public ResponseEntity<Void> removePersonaje(@PathVariable Long id, @PathVariable Long idPersonaje) {
         peliculaService.removePersonaje(id,idPersonaje);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //respondemos con http creado
     }
 
+    //agregar genero a la pelicula
+    @PostMapping("/{id}/genero/{idGenero}")
+    public ResponseEntity<Void> addGenero(@PathVariable Long id, @PathVariable Long idGenero) {
+        peliculaService.addGenero(id,idGenero);
+        return ResponseEntity.status(HttpStatus.CREATED).build(); //respondemos con http creado
+    }
+    //eliminar genero de la pelicula
+    @DeleteMapping("/{id}/genero/{idGenero}")
+    public ResponseEntity<Void> removeGenero(@PathVariable Long id, @PathVariable Long idGenero) {
+        peliculaService.removeGenero(id,idGenero);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //respondemos con http creado
+    }
 }

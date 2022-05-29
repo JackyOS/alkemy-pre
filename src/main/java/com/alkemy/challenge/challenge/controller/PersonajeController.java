@@ -1,7 +1,5 @@
 package com.alkemy.challenge.challenge.controller;
 
-import com.alkemy.challenge.challenge.dto.PeliculaDTO;
-import com.alkemy.challenge.challenge.dto.PeliculaFiltroDTO;
 import com.alkemy.challenge.challenge.dto.PersonajeDTO;
 import com.alkemy.challenge.challenge.dto.PersonajeFiltroDTO;
 import com.alkemy.challenge.challenge.service.PersonajeService;

@@ -102,7 +102,7 @@ public class PeliculaServiceImpl implements PeliculaService {
     public PeliculaDTO update(PeliculaDTO dto, Long id) {
         PeliculaEntity entity = peliculaRepo.getById(id);
 
-        entity.setTitulo(dto.getTitulo());
+        entity.setTitulo(dto.getTitulo()); ///////////////////////////////////sacar esto, usar el service solo con el mapper y el repo => usar mapperpeliculabasic
         entity.setCalificacion(dto.getCalificacion());
         entity.setImagen(dto.getImagen());
         entity.setFechaCreacion(this.string2LocalDate(dto.getFechaCreacion()));
@@ -126,7 +126,6 @@ public class PeliculaServiceImpl implements PeliculaService {
         peliculaEntity.addPersonaje(personajeEntity);
         peliculaRepo.save(peliculaEntity);
     }
-
     @Override
     public void removePersonaje(Long id, Long idPersonaje) {
         PeliculaEntity peliculaEntity = peliculaRepo.getById(id);
@@ -144,6 +143,15 @@ public class PeliculaServiceImpl implements PeliculaService {
         peliculaEntity.addGenero(generoEntity);
         peliculaRepo.save(peliculaEntity);
     }
+    @Override
+    public void removeGenero(Long id, Long idGenero) {
+        PeliculaEntity peliculaEntity = peliculaRepo.getById(id);
+        GeneroEntity generoEntity = generoService.getEntityById(idGenero);
+
+        peliculaEntity.removeGenero(generoEntity);
+        peliculaRepo.save(peliculaEntity);
+    }
+
 
 
     //convierte la entidad a dto
