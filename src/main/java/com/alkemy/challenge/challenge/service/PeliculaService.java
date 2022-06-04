@@ -26,5 +26,5 @@ public interface PeliculaService {
 
     void addGenero(Long id, Long idGenero);
 
-    public void removeGenero(Long id, Long idGenero);
+    void removeGenero(Long id, Long idGenero);
 }

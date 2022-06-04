@@ -1,11 +1,8 @@
 package com.alkemy.challenge.challenge.dto;
 
-import com.alkemy.challenge.challenge.entity.PeliculaEntity;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.List;
-import java.util.Set;
 
 
 @Setter

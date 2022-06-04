@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 public class PeliculaController { //maneja una solicitud y una respuesta -- no hay logica de negocios aca
 
-    //Response entity => tipo de objeto que nos ayuda a manejar las response o respuestas
 
     @Autowired //spring me inicializa este servicio y lo puedo usar aca
     private PeliculaService peliculaService;
@@ -43,19 +42,6 @@ public class PeliculaController { //maneja una solicitud y una respuesta -- no h
         return peliculaService.getPeliculasFiltros(pageNumber, pageSize, sortBy, sortDir);
     }
 
-
-    /*
-    @GetMapping
-    public ResponseEntity<List<PeliculaDTO>> getAll(
-      @RequestParam(required = false) String titulo,
-      @RequestParam(required = false) Long idGenero,
-      @RequestParam(required = false, defaultValue = "ASC") String order
-    ) {
-        List<PeliculaDTO> peliculas = this.peliculaService.getByFilters(titulo, idGenero, order);
-        return ResponseEntity.ok(peliculas);
-    }
-*/
-
     @PostMapping
     public ResponseEntity<PeliculaDTO> save(@RequestBody PeliculaDTO pelicula) {
         PeliculaDTO peliculaGuardada = peliculaService.save(pelicula);
@@ -78,25 +64,25 @@ public class PeliculaController { //maneja una solicitud y una respuesta -- no h
     @PostMapping("/{id}/personaje/{idPersonaje}")
     public ResponseEntity<Void> addPersonaje(@PathVariable Long id, @PathVariable Long idPersonaje) {
         peliculaService.addPersonaje(id,idPersonaje);
-        return ResponseEntity.status(HttpStatus.CREATED).build(); //respondemos con http creado
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     //eliminar personaje de la pelicula
     @DeleteMapping("/{id}/personaje/{idPersonaje}")
     public ResponseEntity<Void> removePersonaje(@PathVariable Long id, @PathVariable Long idPersonaje) {
         peliculaService.removePersonaje(id,idPersonaje);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //respondemos con http creado
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     //agregar genero a la pelicula
     @PostMapping("/{id}/genero/{idGenero}")
     public ResponseEntity<Void> addGenero(@PathVariable Long id, @PathVariable Long idGenero) {
         peliculaService.addGenero(id,idGenero);
-        return ResponseEntity.status(HttpStatus.CREATED).build(); //respondemos con http creado
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     //eliminar genero de la pelicula
     @DeleteMapping("/{id}/genero/{idGenero}")
     public ResponseEntity<Void> removeGenero(@PathVariable Long id, @PathVariable Long idGenero) {
         peliculaService.removeGenero(id,idGenero);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //respondemos con http creado
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

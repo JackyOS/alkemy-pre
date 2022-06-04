@@ -28,19 +28,7 @@ public class PersonajeEntity {
     private int peso;
     private String historia;
 
-    @ManyToMany(mappedBy ="personajes", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy ="personajes")//, cascade = CascadeType.ALL)
     private List<PeliculaEntity> peliculas = new ArrayList<>();
-    //cuando creo un personaje, no voy a poder pasar una lista de peliculas para que lo cree
 
-    /*
-    //agregar y eliminar peliculas
-    public void agregarPelicula(PeliculaEntity pelicula) {
-        this.peliculas.add(pelicula);
-    }
-
-    public void eliminarPelicula(PeliculaEntity pelicula) {
-        this.peliculas.remove(pelicula);
-    }
-
-     */
 }

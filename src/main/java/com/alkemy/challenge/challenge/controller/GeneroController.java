@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RequestMapping("generos")
 @RestController
 public class GeneroController { //maneja una solicitud y una respuesta -- no hay logica de negocios aca
@@ -30,8 +29,7 @@ public class GeneroController { //maneja una solicitud y una respuesta -- no hay
     @PostMapping
     public ResponseEntity<GeneroDTO> save(@RequestBody GeneroDTO generoDTO) {
         GeneroDTO generoGuardado = generoService.save(generoDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(generoGuardado);
-        //respondemos con http creado
+        return ResponseEntity.status(HttpStatus.CREATED).body(generoGuardado); //respondemos con http creado
     }
 
     @PutMapping("/{id}")
@@ -45,6 +43,5 @@ public class GeneroController { //maneja una solicitud y una respuesta -- no hay
         generoService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 
 }

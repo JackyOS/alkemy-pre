@@ -35,8 +35,6 @@ public class UserAuthController { //para registrarno y para hacer el login
         this.jwtUtils = jwtUtils;
     }
 
-
-
     @PostMapping("/singup") //registrarse
     public ResponseEntity<AuthenticationResponse> singUp(@Valid @RequestBody UserDTO user) throws Exception {
         this.userDetailsCustomService.save(user);

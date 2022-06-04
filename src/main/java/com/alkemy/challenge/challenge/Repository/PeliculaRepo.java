@@ -1,6 +1,5 @@
 package com.alkemy.challenge.challenge.Repository;
 
-
 import com.alkemy.challenge.challenge.entity.PeliculaEntity;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -16,7 +16,7 @@ public class PeliculaBasicDTO {
     private Long id;
     private String imagen;
     private String titulo;
-    private String fechaCreacion;
+    private LocalDate fechaCreacion;
     private int calificacion; //DE 1 A 5
 
 }

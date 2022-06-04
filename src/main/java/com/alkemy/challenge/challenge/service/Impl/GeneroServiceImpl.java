@@ -1,6 +1,5 @@
 package com.alkemy.challenge.challenge.service.Impl;
 
-
 import com.alkemy.challenge.challenge.Repository.GeneroRepo;
 import com.alkemy.challenge.challenge.dto.GeneroDTO;
 import com.alkemy.challenge.challenge.entity.GeneroEntity;
@@ -37,21 +36,16 @@ public class GeneroServiceImpl implements GeneroService {
     public GeneroDTO save(GeneroDTO dto) {
         GeneroEntity entity = mapperDTO2Entity(dto);
         GeneroEntity generoGuardado = generoRepo.save(entity);
-        GeneroDTO generoDTO = mapperEntity2DTO(generoGuardado);
-        return generoDTO;
+        return mapperEntity2DTO(generoGuardado);
     }
 
     @Override
     public GeneroDTO update(GeneroDTO dto, Long id) {
         GeneroEntity entity = generoRepo.getById(id);
-
         entity.setImagen(dto.getImagen());
         entity.setNombre(dto.getNombre());
-
         GeneroEntity generoGuardado = generoRepo.save(entity);
-        GeneroDTO generoDTO = mapperEntity2DTO(generoGuardado);
-
-        return generoDTO;
+        return mapperEntity2DTO(generoGuardado);
     }
 
     @Override

@@ -14,13 +14,10 @@ import java.util.List;
 
 @RequestMapping("personajes")
 @RestController
-public class PersonajeController { //maneja una solicitud y una respuesta -- no hay logica de negocios aca
-
-    //Response entity => tipo de objeto que nos ayuda a manejar las response o respuestas
+public class PersonajeController {
 
     @Autowired //spring me inicializa este servicio y lo puedo usar aca
     private PersonajeService personajeService;
-
 
     @GetMapping
     public ResponseEntity<List<PersonajeDTO>> getAll() {
@@ -55,16 +52,5 @@ public class PersonajeController { //maneja una solicitud y una respuesta -- no 
         personajeService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

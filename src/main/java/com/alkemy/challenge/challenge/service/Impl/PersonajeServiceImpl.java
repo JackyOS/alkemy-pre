@@ -1,11 +1,8 @@
 package com.alkemy.challenge.challenge.service.Impl;
 
-
 import com.alkemy.challenge.challenge.Repository.PersonajeRepo;
 import com.alkemy.challenge.challenge.dto.*;
-import com.alkemy.challenge.challenge.entity.PeliculaEntity;
 import com.alkemy.challenge.challenge.entity.PersonajeEntity;
-//import com.alkemy.challenge.challenge.mapper.PersonajeMapper;
 import com.alkemy.challenge.challenge.service.PersonajeService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +34,6 @@ public class PersonajeServiceImpl implements PersonajeService {
     public PersonajeEntity getEntityById(Long id) {
         return personajeRepo.getById(id);
     }
-
 
     @Override
     public PersonajeFiltroDTO getPersonajesFiltros(int pageNumber, int pageSize, String sortBy, String sortDir){
@@ -86,8 +82,6 @@ public class PersonajeServiceImpl implements PersonajeService {
     public void delete(Long id){
         personajeRepo.deleteById(id);
     }
-
-
 
     //convierte la entidad a dto
     public PersonajeDTO mapperEntity2DTO(PersonajeEntity entity){
